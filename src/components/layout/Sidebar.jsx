@@ -11,11 +11,7 @@ import ProfileMenuIcon from "@/assets/images/sidebar-icons/ProfileMenuIcon";
 import SidebarLeftArrowIcon from "@/assets/images/sidebar-icons/SidebarLeftArrowIcon";
 
 const sidebarMenus = [
-  {
-    name: "Files Dashboard",
-    route: "/",
-    icon: FilesDashboardMenuIcon,
-  },
+  { name: "Files Dashboard", route: "/", icon: FilesDashboardMenuIcon },
   {
     name: "Sales Dashboard",
     route: "/sales-dashboard",
@@ -31,7 +27,6 @@ const sidebarBottomMenus = [
   },
   {
     name: "Belk",
-    // route: "/belk",
     icon: ProfileMenuIcon,
     hasSubMenu: true,
     subMenus: [
@@ -46,118 +41,102 @@ const sidebarBottomMenus = [
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const router = useRouter();
   const pathname = usePathname();
-
   const [openSubMenu, setOpenSubMenu] = useState(false);
 
-  return (
-    <div className="lg:flex lg:flex-col lg:inset-y-0 lg:z-40 transition-all duration-300 lg:w-[341px] fixed">
-      <div className="p-6 bg-[#242424] flex grow flex-col justify-between items-start">
-        <div className="w-[293px] flex flex-col gap-6 justify-start items-start">
-          <button className="w-full cursor-pointer">
-            <Image
-              src={logo}
-              width={176}
-              height={44}
-              alt="Logo"
-              className="object-contain"
-            />
-          </button>
-          <div className="w-full flex flex-col gap-3 items-start">
-            {sidebarMenus?.map((item, index) => {
-              const isActive = item?.route === pathname;
-              const IconComponent = item?.icon;
+  const handleMenuClick = (route) => {
+    setIsSidebarOpen(false);
+    router.push(route);
+  };
 
-              return (
-                <button
-                  key={index}
-                  onClick={() => router?.push(item?.route)}
-                  className={`w-full p-4 ${
-                    item?.route === pathname
-                      ? "bg-[#D0CAC2] rounded-[8px]"
-                      : "bg-transparent"
-                  } flex gap-3 justify-start items-center cursor-pointer`}
+  return (
+    <div
+      className={`sidebar fixed z-50 bg-[#242424] top-0 left-0 h-full transition-transform duration-300 w-[270px] lg:w-[341px] ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } lg:translate-x-0`}
+    >
+      <div className="p-6 flex flex-col justify-between h-full">
+        <div className="flex flex-col gap-6">
+          <button onClick={() => handleMenuClick("/")} className="w-full">
+            <Image src={logo} width={176} height={44} alt="Logo" />
+          </button>
+          {sidebarMenus.map((item, idx) => {
+            const isActive = pathname === item.route;
+            const Icon = item.icon;
+            return (
+              <button
+                key={idx}
+                onClick={() => handleMenuClick(item.route)}
+                className={`flex gap-3 p-4 w-full items-center rounded-[8px] ${
+                  isActive ? "bg-[#D0CAC2]" : ""
+                }`}
+              >
+                <Icon color={isActive ? "#000" : "#FFF"} />
+                <p
+                  className={`text-[18px] font-[Poppins] ${
+                    isActive ? "text-[#000]" : "text-[#FFF]"
+                  }`}
                 >
-                  <IconComponent color={isActive ? "#000000" : "#FFFFFF"} />
-                  <p
-                    className={`${
-                      item?.route === pathname
-                        ? "text-[#000000]"
-                        : "text-[#FFFFFF]"
-                    } text-[18px] font-medium font-[Poppins] leading-[24px] align-middle`}
-                  >
-                    {item?.name}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
+                  {item.name}
+                </p>
+              </button>
+            );
+          })}
         </div>
-        <div className="w-[293px] flex flex-col gap-3 justify-start items-start">
-          {sidebarBottomMenus?.map((item, index) => {
-            const isActive = item?.route === pathname;
-            const IconComponent = item?.icon;
+
+        <div className="flex flex-col gap-3">
+          {sidebarBottomMenus.map((item, idx) => {
+            const isActive = pathname === item.route;
+            const Icon = item.icon;
             const isBelk = item.name === "Belk";
 
             return (
-              <div key={index} className="w-full relative">
+              <div key={idx} className="w-full relative">
                 <button
                   onClick={() => {
-                    if (isBelk) {
-                      setOpenSubMenu((prev) => !prev);
-                    } else {
-                      router?.push(item?.route);
-                    }
+                    if (isBelk) setOpenSubMenu((prev) => !prev);
+                    else handleMenuClick(item.route);
                   }}
-                  className={`w-full p-4 ${
-                    isActive ? "bg-[#D0CAC2] rounded-[8px]" : "bg-transparent"
-                  } flex gap-3 justify-start items-center cursor-pointer`}
+                  className={`w-full p-4 flex gap-3 items-center rounded-[8px] ${
+                    isActive ? "bg-[#D0CAC2]" : ""
+                  }`}
                 >
-                  <IconComponent color={isActive ? "#000000" : "#FFFFFF"} />
-                  <div className="w-full flex justify-between items-center">
+                  <Icon color={isActive ? "#000" : "#FFF"} />
+                  <div className="flex justify-between w-full items-center">
                     <p
-                      className={`${
-                        isActive ? "text-[#000000]" : "text-[#FFFFFF]"
-                      } text-[18px] font-medium font-[Poppins] leading-[24px]`}
+                      className={`text-[18px] font-[Poppins] ${
+                        isActive ? "text-[#000]" : "text-[#FFF]"
+                      }`}
                     >
-                      {item?.name}
+                      {item.name}
                     </p>
                     {isBelk && (
                       <SidebarLeftArrowIcon
-                        color={isActive ? "#000000" : "#FFFFFF"}
-                        className={`transform transition-transform duration-300 ${
+                        className={`transform transition-transform ${
                           openSubMenu ? "rotate-90" : ""
                         }`}
+                        color={isActive ? "#000" : "#FFF"}
                       />
                     )}
                   </div>
                 </button>
-
-                {/* Submenu Popup */}
                 {isBelk && openSubMenu && (
-                  <div className="absolute bottom-[60px] left-0 w-[293px] bg-white shadow-lg rounded-[8px] z-50">
-                    {item?.subMenus?.map((subItem, subIndex) => {
-                      const isSubActive = pathname === subItem.route;
-
-                      return (
-                        <button
-                          key={subIndex}
-                          onClick={() => {
-                            setOpenSubMenu(false);
-                            router.push(subItem.route);
-                          }}
-                          className={`w-full text-left px-4 py-3 font-[Poppins] text-[16px] ${
-                            isSubActive
-                              ? "text-blue-700"
-                              : "text-[#000]"
-                          }`}
-                        >
-                          {subItem.name}
-                        </button>
-                      );
-                    })}
+                  <div className="absolute bottom-[60px] left-0 w-full bg-white shadow-lg rounded-[8px] z-50">
+                    {item.subMenus.map((sub, subIdx) => (
+                      <button
+                        key={subIdx}
+                        onClick={() => handleMenuClick(sub.route)}
+                        className={`w-full text-left px-4 py-3 font-[Poppins] text-[16px] ${
+                          pathname === sub.route
+                            ? "text-blue-700"
+                            : "text-[#000]"
+                        }`}
+                      >
+                        {sub.name}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>

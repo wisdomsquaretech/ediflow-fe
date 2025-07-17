@@ -3,7 +3,7 @@ import FilesDashboard from "@/components/layout/FilesDashboard";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
     <FilesDashboard/>
     <AllFileTable/>
     </div>
