@@ -8,7 +8,7 @@ const LayoutWrapper = ({ children }) => {
       <Header />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex-1 custom-scrollbar overflow-y-auto transition-all duration-300 lg:ml-[341px]">
+        <main className="flex-1 custom-scrollbar overflow-y-auto transition-all duration-300 lg:ml-[341px] mt-[80px]">
           {children}
         </main>
       </div>

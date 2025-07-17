@@ -1,0 +1,21 @@
+const SidebarLeftArrowIcon = ({ color }) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5 14L10.2929 8.70711C10.6834 8.31658 10.6834 7.68342 10.2929 7.29289L5 2"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default SidebarLeftArrowIcon;
