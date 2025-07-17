@@ -10,15 +10,15 @@ const SalesDashboardMenuIcon = ({ color }) => {
       <path
         d="M20.5 7L12 2L3.5 7V17L12 22L20.5 17V7Z"
         stroke={color}
-        stroke-width="2"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinejoin="round"
       />
       <path
         d="M12 11V15M16 9V15M8 13V15"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

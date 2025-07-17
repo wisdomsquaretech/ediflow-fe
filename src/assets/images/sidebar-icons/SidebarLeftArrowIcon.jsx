@@ -10,9 +10,9 @@ const SidebarLeftArrowIcon = ({ color }) => {
       <path
         d="M5 14L10.2929 8.70711C10.6834 8.31658 10.6834 7.68342 10.2929 7.29289L5 2"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

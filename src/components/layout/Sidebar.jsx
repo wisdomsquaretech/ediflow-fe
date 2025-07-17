@@ -31,12 +31,17 @@ const sidebarBottomMenus = [
   },
   {
     name: "Belk",
-    route: "/belk",
+    // route: "/belk",
     icon: ProfileMenuIcon,
     hasSubMenu: true,
     subMenus: [
-      { name: "Submenu 1", route: "/belk/sub1" },
-      { name: "Submenu 2", route: "/belk/sub2" },
+      { name: "Belk", route: "/belk" },
+      { name: "Data Armor", route: "/belk1" },
+      { name: "Super 98", route: "/belk2" },
+      { name: "Randon Master", route: "/belk3" },
+      { name: "Super 24", route: "/belk4" },
+      { name: "Popup", route: "/belk5" },
+      { name: "master1", route: "/belk6" },
     ],
   },
 ];
@@ -133,18 +138,26 @@ const Sidebar = () => {
                 {/* Submenu Popup */}
                 {isBelk && openSubMenu && (
                   <div className="absolute bottom-[60px] left-0 w-[293px] bg-white shadow-lg rounded-[8px] z-50">
-                    {item?.subMenus?.map((subItem, subIndex) => (
-                      <button
-                        key={subIndex}
-                        onClick={() => {
-                          setOpenSubMenu(false);
-                          router.push(subItem.route);
-                        }}
-                        className="w-full text-left px-4 py-3 hover:bg-gray-100 text-[#000] font-[Poppins] text-[16px]"
-                      >
-                        {subItem.name}
-                      </button>
-                    ))}
+                    {item?.subMenus?.map((subItem, subIndex) => {
+                      const isSubActive = pathname === subItem.route;
+
+                      return (
+                        <button
+                          key={subIndex}
+                          onClick={() => {
+                            setOpenSubMenu(false);
+                            router.push(subItem.route);
+                          }}
+                          className={`w-full text-left px-4 py-3 font-[Poppins] text-[16px] ${
+                            isSubActive
+                              ? "text-blue-700"
+                              : "text-[#000]"
+                          }`}
+                        >
+                          {subItem.name}
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
