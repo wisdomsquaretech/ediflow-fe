@@ -101,7 +101,7 @@ const DataTable = ({ files }) => {
   };
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full">
       <div className="p-6">
         <h2 className="text-[14px] lg:text-[20px] font-semibold mb-6 text-gray-900">
           All Files
