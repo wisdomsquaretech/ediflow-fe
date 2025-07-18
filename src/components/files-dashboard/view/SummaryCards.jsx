@@ -1,6 +1,6 @@
 import Image from "next/image";
-import fluentArrowUp from "../../../assets/images/fileDashboard/fluentArrow_up.svg";
-import fluentArrowDown from "../../../assets/images/fileDashboard/fluentArrow_down.svg";
+import fluentArrowUp from "@/assets/images/fileDashboard/fluentArrow_up.svg";
+import fluentArrowDown from "@/assets/images/fileDashboard/fluentArrow_down.svg";
 
 const StatCard = ({ title, value, change, isPositive }) => {
   return (

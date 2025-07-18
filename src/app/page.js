@@ -1,6 +1,6 @@
 "use client";
 
-import FilesDashboardContainer from "@/components/filesDashboard/container/FilesDashboardContainer";
+import FilesDashboardContainer from "@/components/files-dashboard/container/FilesDashboardContainer";
 
 export default function Home() {
   return (

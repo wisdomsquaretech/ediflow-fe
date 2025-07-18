@@ -13,7 +13,7 @@ const FileDistributionChart = () => {
     labels: ["Total Sales", "Total Inventory", "Invalid"],
     datasets: [
       {
-        data: [200, 100, 80],
+        data: [264, 127, 45],
         backgroundColor: ["#0085FF", "#66B6FF", "#BFE0FF"],
         borderWidth: 0,
         cutout: "48%",
@@ -35,7 +35,7 @@ const FileDistributionChart = () => {
   };
 
   return (
-    <div className="w- p-4 bg-[#FFFFFF] rounded-[8px] border border-[#EDECE9]">
+    <div className="h-full p-4 bg-[#FFFFFF] rounded-[8px] border border-[#EDECE9]">
       <p className="text-[20px] text-[#242424] font-medium font-[Poppins] leading-[100%] mb-3">
         File Distribution
       </p>
