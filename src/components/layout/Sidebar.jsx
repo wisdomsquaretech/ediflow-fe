@@ -48,7 +48,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   const handleMenuClick = (route) => {
     setIsSidebarOpen(false);
-    router.push(route);
+    router?.push(route);
   };
 
   return (
@@ -62,13 +62,13 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <button onClick={() => handleMenuClick("/")} className="w-full">
             <Image src={logo} width={176} height={44} alt="Logo" />
           </button>
-          {sidebarMenus.map((item, idx) => {
-            const isActive = pathname === item.route;
-            const Icon = item.icon;
+          {sidebarMenus?.map((item, idx) => {
+            const isActive = pathname === item?.route;
+            const Icon = item?.icon;
             return (
               <button
                 key={idx}
-                onClick={() => handleMenuClick(item.route)}
+                onClick={() => handleMenuClick(item?.route)}
                 className={`flex gap-3 p-4 w-full items-center rounded-[8px] ${
                   isActive ? "bg-[#D0CAC2]" : ""
                 }`}
@@ -79,7 +79,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     isActive ? "text-[#000]" : "text-[#FFF]"
                   }`}
                 >
-                  {item.name}
+                  {item?.name}
                 </p>
               </button>
             );
@@ -87,17 +87,17 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
 
         <div className="flex flex-col gap-3">
-          {sidebarBottomMenus.map((item, idx) => {
-            const isActive = pathname === item.route;
-            const Icon = item.icon;
-            const isBelk = item.name === "Belk";
+          {sidebarBottomMenus?.map((item, idx) => {
+            const isActive = pathname === item?.route;
+            const Icon = item?.icon;
+            const isBelk = item?.name === "Belk";
 
             return (
               <div key={idx} className="w-full relative">
                 <button
                   onClick={() => {
                     if (isBelk) setOpenSubMenu((prev) => !prev);
-                    else handleMenuClick(item.route);
+                    else handleMenuClick(item?.route);
                   }}
                   className={`w-full p-4 flex gap-3 items-center rounded-[8px] ${
                     isActive ? "bg-[#D0CAC2]" : ""
@@ -124,12 +124,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </button>
                 {isBelk && openSubMenu && (
                   <div className="absolute bottom-[60px] left-0 w-full bg-white shadow-lg rounded-[8px] z-50">
-                    {item.subMenus.map((sub, subIdx) => (
+                    {item?.subMenus?.map((sub, subIdx) => (
                       <button
                         key={subIdx}
-                        onClick={() => handleMenuClick(sub.route)}
+                        onClick={() => handleMenuClick(sub?.route)}
                         className={`w-full text-left px-4 py-3 font-[Poppins] text-[16px] ${
-                          pathname === sub.route
+                          pathname === sub?.route
                             ? "text-blue-700"
                             : "text-[#000]"
                         }`}

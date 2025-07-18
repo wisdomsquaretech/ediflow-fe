@@ -1,11 +1,11 @@
-import { AllFileTable } from "@/components/layout/AllFileTable";
-import FilesDashboard from "@/components/layout/FilesDashboard";
+"use client";
+
+import FilesDashboardContainer from "@/components/filesDashboard/container/FilesDashboardContainer";
 
 export default function Home() {
   return (
-    <div>
-    <FilesDashboard/>
-    <AllFileTable/>
-    </div>
+    <>
+      <FilesDashboardContainer />
+    </>
   );
 }

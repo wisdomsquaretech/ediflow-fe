@@ -1,7 +1,6 @@
-import React from "react";
 import Image from "next/image";
-import fluentArrowUp from "../../assets/images/fileDashboard/fluentArrow_up.svg";
-import fluentArrowDown from "../../assets/images/fileDashboard/fluentArrow_down.svg";
+import fluentArrowUp from "../../../assets/images/fileDashboard/fluentArrow_up.svg";
+import fluentArrowDown from "../../../assets/images/fileDashboard/fluentArrow_down.svg";
 
 const StatCard = ({ title, value, change, isPositive }) => {
   return (
@@ -17,7 +16,8 @@ const StatCard = ({ title, value, change, isPositive }) => {
           <Image
             src={isPositive ? fluentArrowUp : fluentArrowDown}
             alt={isPositive ? "up" : "down"}
-            className="w-[16px] h-[16px]"
+            width={16}
+            height={16}
           />
           <p
             className={`font-poppins text-base leading-[100%] tracking-[0%] text-[16px] ${
@@ -36,43 +36,43 @@ const StatCard = ({ title, value, change, isPositive }) => {
   );
 };
 
-const FilesDashboard = () => {
-  const cards = [
-    {
-      title: "Files Processed",
-      value: 356,
-      change: "+11.6%",
-      isPositive: true,
-    },
-    { title: "Files Rejected", value: 21, change: "-8.6%", isPositive: false },
-    { title: "Files Delayed", value: 12, change: "+13.6%", isPositive: true },
-    {
-      title: "Total Invalid Files",
-      value: 45,
-      change: "-12.6%",
-      isPositive: false,
-    },
-    {
-      title: "Total Valid Files",
-      value: 391,
-      change: "+16.8%",
-      isPositive: true,
-    },
-  ];
+const cards = [
+  {
+    title: "Files Processed",
+    value: 356,
+    change: "+11.6%",
+    isPositive: true,
+  },
+  { title: "Files Rejected", value: 21, change: "-8.6%", isPositive: false },
+  { title: "Files Delayed", value: 12, change: "+13.6%", isPositive: true },
+  {
+    title: "Total Invalid Files",
+    value: 45,
+    change: "-12.6%",
+    isPositive: false,
+  },
+  {
+    title: "Total Valid Files",
+    value: 391,
+    change: "+16.8%",
+    isPositive: true,
+  },
+];
 
+const SummaryCards = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-4 p-4">
-      {cards.map((card, index) => (
+      {cards?.map((card, index) => (
         <StatCard
           key={index}
-          title={card.title}
-          value={card.value}
-          change={card.change}
-          isPositive={card.isPositive}
+          title={card?.title}
+          value={card?.value}
+          change={card?.change}
+          isPositive={card?.isPositive}
         />
       ))}
     </div>
   );
 };
 
-export default FilesDashboard;
+export default SummaryCards;
