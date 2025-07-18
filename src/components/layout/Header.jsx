@@ -206,21 +206,23 @@ const Header = ({ setIsSidebarOpen }) => {
           {/* Notification Button */}
           <div className="relative" ref={menuRef}>
             <button
-              onClick={() => setOpenNotification((prev) => !prev)}
-              className="p-[11px] bg-[#FFFFFF] rounded-[8px] border border-[#EDECE9] flex justify-center cursor-pointer"
-            >
-              <Image
-                src={notificationIcon}
-                width={24}
-                height={24}
-                alt="notificationIcon"
-                className="object-contain"
-              />
-            </button>
+            onClick={() => setOpenNotification((prev) => !prev)}
+            className={`p-[11px] rounded-[8px] border flex justify-center cursor-pointer transition-colors duration-200
+              ${openNotification ? 'bg-[#242424] border-[#242424]' : 'bg-white border-[#EDECE9]'}`}
+          >
+            <Image
+              src={notificationIcon}
+              width={24}
+              height={24}
+              alt="notificationIcon"
+              className={`object-contain transition duration-200 ${openNotification ? 'invert' : ''}`}
+            />
+          </button>
+          
 
             {openNotification && (
-              <div className="absolute right-0 top-[60px] w-[400px] bg-[#F9F9F9] border-[1px] border-[#EDECE9] rounded-[8px] shadow-[#0000001A] z-50">
-                <div className="p-4 flex justify-between items-center border-b border-[#EDECE9]">
+              <div className="absolute right-0 top-[80px] w-[504px] h-[596px] p-[16px] gap-[16px] opacity-100 bg-[#F9F9F9] border-[1px] border-[#EDECE9] rounded-[8px] shadow-[#0000001A] z-50">
+                <div className="p-4 flex justify-between items-center font-[poppins] border-[#EDECE9]">
                   <h3 className="text-[20px] align-middle font-semibold text-[#242424]">
                     Notifications{" "}
                     <span className="text-[#FF1F58] text-[20px]">•</span>
@@ -229,25 +231,35 @@ const Header = ({ setIsSidebarOpen }) => {
                     Clear all
                   </p>
                 </div>
-                <div className="p-2 flex flex-col gap-4 max-h-[400px] overflow-auto">
+                <div className="p-2 flex flex-col gap-4 max-h-[500px] overflow-auto">
                   {[...Array(3)].map((_, i) => (
                     <div
                       key={i}
                       className="bg-white border border-[#EDECE9] rounded-[10px] p-4 flex flex-col gap-1"
                     >
                       <div className="flex justify-between items-start gap-2">
+                        {/* Icon + Text Content */}
                         <div className="flex items-center gap-2">
                           <Image
                             src={NotificationGroup}
                             alt="notification group icon"
-                            className="w-[20px] h-[20px]"
+                            className="w-[20px] h-[20px] mt-1"
                           />
-                          <p className="text-[#242424] font-medium text-[16px]">
-                            Upload Error
-                          </p>
+                          <div className="flex flex-col gap-[10px] font-[poppins]">
+                            <p className="font-poppins font-medium text-[16px] text-[#242424] leading-[136%] text-tracking-[0] align-middle ">
+                              Upload Error
+                            </p>
+                            <p className="text-[#676767] font-poppins font-normal text-[14px] leading-[136%] tracking-[0] align-middle">
+                              Vendor name 1 is not uploading since one month
+                            </p>
+                            <p className="text-[#0085FF] font-poppins font-normal text-[14px] leading-[136%] tracking-[0] align-middle cursor-pointer">
+                              Contact
+                            </p>
+                          </div>
                         </div>
 
-                        <p className="text-[#676767] text-[12px] whitespace-nowrap">
+                        {/* Time */}
+                        <p className="text-[#676767] text-[12px] whitespace-nowrap font-[poppins]">
                           {i === 0
                             ? "Just now"
                             : i === 1
@@ -255,14 +267,6 @@ const Header = ({ setIsSidebarOpen }) => {
                             : "1 week ago"}
                         </p>
                       </div>
-
-                      <p className="text-[#676767] text-[14px] leading-snug mt-1">
-                        Vendor name 1 is not uploading since one month
-                      </p>
-
-                      <p className="text-[#0085FF] text-[14px] font-normal cursor-pointer mt-1">
-                        Contact
-                      </p>
                     </div>
                   ))}
                 </div>
