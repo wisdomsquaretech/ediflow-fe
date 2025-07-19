@@ -8,11 +8,11 @@ import leftArrowIcon from "@/assets/images/header-icons/left-arrow-icon.svg";
 import notificationIcon from "@/assets/images/header-icons/notification-Icon.svg";
 import NotificationGroup from "@/assets/images/header-icons/Group.svg";
 import { FileUploadComponent } from "../modals/UploadFileModal";
-
+import { DateRangeModal } from "../modals/DateRangeModal";
 const Header = ({ setIsSidebarOpen }) => {
   const [openNotification, setOpenNotification] = useState(false);
   const [openUploadModal, setOpenUploadModal] = useState(false);
-
+  const [openDateRange, setDateRange] = useState(false);
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -42,7 +42,9 @@ const Header = ({ setIsSidebarOpen }) => {
           </p>
         </div>
         <div className="flex gap-4 items-center ml-auto lg:ml-0 relative">
-          <button className="hidden lg:flex py-[11px] px-4 bg-[#FFFFFF] rounded-[8px] border border-[#EDECE9] gap-4 justify-between items-center cursor-pointer">
+          <button 
+            onClick={() => setDateRange((prev) => !prev)}
+          className="hidden lg:flex py-[11px] px-4 bg-[#FFFFFF] rounded-[8px] border border-[#EDECE9] gap-4 justify-between items-center cursor-pointer">
             <div className="flex gap-4 justify-center items-center">
               <Image
                 src={calenderIcon}
@@ -156,6 +158,10 @@ const Header = ({ setIsSidebarOpen }) => {
         isOpen={openUploadModal}
         onClose={() => setOpenUploadModal(false)}
       />
+      <DateRangeModal
+  isOpen={openDateRange}
+  onClose={() => setDateRange(false)}
+/>
     </div>
   );
 };
