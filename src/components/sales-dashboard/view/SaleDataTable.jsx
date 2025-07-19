@@ -19,12 +19,12 @@ export function SaleDataTable({ files }) {
         <table className="w-full table-fixed border-separate border-spacing-y-4">
           <thead>
             <tr className="bg-[#F4F4F4] font-[poppins] p-4">
-              <th className="font-medium font-[poppins] leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px] rounded-l-xl">Sr</th>
+              <th className="font-medium font-[poppins] leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px] rounded-l-[8px]">Sr</th>
               <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px]">Product ID</th>
               <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px]">Store</th>
               <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px]">Sales</th>
               <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px]">Avg. Sales</th>
-              <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px] rounded-r-xl">Inventory</th>
+              <th className="font-[poppins] font-medium leading-[100%] tracking-[0%] text-center text-[#242424] py-4 text-[18.01px] rounded-r-[8px]">Inventory</th>
             </tr>
           </thead>
           <tbody>
