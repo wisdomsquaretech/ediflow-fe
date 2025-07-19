@@ -51,7 +51,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <Image src={logo} width={176} height={44} alt="Logo" />
           </button>
           {sidebarMenus?.map((item, idx) => {
-            const isActive = pathname === item?.route;
+            const isActive = pathname === item?.route || (item?.name === "Files Dashboard" && pathname?.startsWith("/review-file"));;
             const Icon = item?.icon;
             return (
               <button key={idx} onClick={() => handleMenuClick(item?.route)} className={`flex gap-3 p-4 w-full items-center rounded-[8px] ${isActive ? "bg-[#D0CAC2]" : ""}`}>

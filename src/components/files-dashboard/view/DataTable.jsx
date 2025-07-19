@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect  } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { MoreVertical } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -87,6 +88,8 @@ const sampleFiles = [
 ];
 
 export function DataTable({ files }) {
+  const router = useRouter();
+
   const [openMenuId, setOpenMenuId] = useState(null);
   const menuRef = useRef({});
   const clickedInsideButtonRef = useRef(false);
@@ -211,7 +214,7 @@ export function DataTable({ files }) {
                           <Image src={RejectIcon} alt="RejectIcon" height={24} width={24} />
                           <p className="text-[18px] text-[#242424] font-normal font-[Poppins] leading-[100%]">Reject</p>
                           </button>
-                          <button className="flex gap-2 justify-start items-center cursor-pointer">
+                          <button  onClick={() => {router?.push("/review-file")}} className="flex gap-2 justify-start items-center cursor-pointer">
                           <Image src={ReviewIcon} alt="ReviewIcon" height={24} width={24} />
                           <p className="text-[18px] text-[#242424] font-normal font-[Poppins] leading-[100%]">Review</p>
                           </button>

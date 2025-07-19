@@ -7,7 +7,7 @@ import calenderIcon from "@/assets/images/header-icons/calender-icon.svg";
 import leftArrowIcon from "@/assets/images/header-icons/left-arrow-icon.svg";
 import notificationIcon from "@/assets/images/header-icons/notification-Icon.svg";
 import NotificationGroup from "@/assets/images/header-icons/Group.svg";
-import { FileUploadComponent } from "../modal/UploadFileModal";
+import { FileUploadComponent } from "../modals/UploadFileModal";
 
 const Header = ({ setIsSidebarOpen }) => {
   const [openNotification, setOpenNotification] = useState(false);
