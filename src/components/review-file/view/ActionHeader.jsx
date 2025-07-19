@@ -2,22 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import FilterIcon from "@/assets/images/review-file/FilterIcon";
 import uplaodIcon from "@/assets/images/header-icons/Uplaod-Icon.svg";
 import { FileUploadComponent } from "@/components/modals/UploadFileModal";
 
 const filterOptions = ["Data Integrity", "Business Logic"];
 
-const ActionHeader = () => {
+const ActionHeader = ({ isRejected, setIsRejected }) => {
   const [selectedFilter, setSelectedFilter] = useState("");
-  const [isRejected, setIsRejected] = useState(false);
   const [openUploadModal, setOpenUploadModal] = useState(false);
 
   return (

@@ -68,8 +68,6 @@ const handleFileSelect = (event) => {
     }
   };
   
-  
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/20">
       <div className="bg-white shadow-xl w-[650px] p-[32px] rounded-[8px] relative">
